@@ -1,9 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
-import User from './User.js'
 
 // Define an interface for the Thought document
 interface IComment extends Document {
-  commentAuthor: typeof User;
   commentText: string;
   createdAt: Date;
 }
@@ -24,17 +22,13 @@ const commentSchema = new Schema<IComment>(
       minlength: 1,
       maxlength: 280,
     },
-    commentAuthor: {
-      type: Schema.Types.ObjectId,
-      ref: User
-    }
   },
   {
     _id: false,
     toJSON: { getters: true },
     toObject: { getters: true },
     timestamps: true,
-  },
+  }
 );
 
 // Define the schema for the Thought document

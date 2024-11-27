@@ -45,14 +45,14 @@ const resolvers = {
     users: async () => {
       return User.find().populate('thoughts');
     },
-    user: async (_parent: any, {username}: UserArgs) => {
+    user: async (_parent: any, { username }: UserArgs) => {
       return User.findOne({ username }).populate('thoughts');
     },
     thoughts: async () => {
       return await Thought.find().sort({ createdAt: -1 });
     },
     thought: async (_parent: any, { thoughtId }: ThoughtArgs) => {
-      return await Thought.findOne({ _id: thoughtId }).populate({ path: 'comments', populate: 'commentAuthor'});
+      return await Thought.findOne({ _id: thoughtId });
     },
     // Query to get the authenticated user's information
     // The 'me' query relies on the context to check if the user is authenticated
@@ -112,6 +112,7 @@ const resolvers = {
         return thought;
       }
       throw AuthenticationError;
+      ('You need to be logged in!');
     },
     addComment: async (_parent: any, { thoughtId, commentText }: AddCommentArgs, context: any) => {
       if (context.user) {
@@ -119,7 +120,7 @@ const resolvers = {
           { _id: thoughtId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user._id },
+              comments: { commentText, commentAuthor: context.user.username },
             },
           },
           {
