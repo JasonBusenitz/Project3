@@ -51,7 +51,7 @@ const ThoughtForm = () => {
   return (
     <div>
       <h3>What's on your techy mind?</h3>
-
+      { /* TODO: What's the Auth.loggedIn() doing here? */}
       {Auth.loggedIn() ? (
         <>
           <p

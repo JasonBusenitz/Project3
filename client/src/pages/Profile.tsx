@@ -17,11 +17,11 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
   
-  // This if condition checks if the user is logged in and if the logged-in user's username matches the userParam.
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    // If the condition is true, it navigates to the "/me" route, which is likely the user's profile page.
-    return <Navigate to="/me" />;
-  }
+  // TODO: What is this if condition checking?
+if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  // TODO: Why is it navigating to the "/me" route?
+  return <Navigate to="/me" />;
+}
 
   if (loading) {
     return <div>Loading...</div>;

@@ -36,9 +36,7 @@ export const QUERY_SINGLE_THOUGHT = gql`
       comments {
         _id
         commentText
-        commentAuthor {
-          username
-        }
+        commentAuthor
         createdAt
       }
     }

@@ -5,7 +5,6 @@ import Auth from '../../utils/auth';
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // Logs the user out by calling the logout method from Auth
     Auth.logout();
   };
   return (
@@ -18,11 +17,11 @@ const Header = () => {
           <p className="m-0">Get into the mind of a programmer.</p>
         </div>
         <div>
-          {/* Checking if the user is logged in to conditionally render profile link and logout button */}
+          {/*TODO: What is the Auth.loggedIn() doing here  */}
           {Auth.loggedIn() ? (
             <>
               <Link className="btn btn-lg btn-info m-2" to="/me">
-                {/* Retrieving the logged-in user's profile to display the username */}
+                {/*TODO: What is the Auth.getProfile() doing here  */}
                 {Auth.getProfile().data.username}'s profile
               </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>

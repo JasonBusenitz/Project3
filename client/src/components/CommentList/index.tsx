@@ -2,9 +2,6 @@ interface Comment {
   _id: string;
   createdAt: string;
   commentText: string;
-  commentAuthor: {
-    username: string
-  }
 }
 
 interface CommentListProps {
@@ -31,7 +28,7 @@ const CommentList: React.FC<CommentListProps> = ({ comments = [] }) => {
             <div key={comment._id} className="col-12 mb-3 pb-3">
               <div className="p-3 bg-dark text-light">
                 <h5 className="card-header">
-                  {comment.commentAuthor.username} commented {' '}
+                  An anonymous user commented{' '}
                   <span style={{ fontSize: '0.825rem' }}>
                     on {new Date(Number(comment.createdAt)).toLocaleString()}
                   </span>
